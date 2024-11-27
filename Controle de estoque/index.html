@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt.br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="./src/main.css">
+</head>
+<body>
+    <h1>Sistema de Controle de Estoque</h1>
+    <div class="container">
+        <!-- Formulário de registro de operações -->
+        <div class="form-container">
+            <h2>Registrar Operações</h2>
+            <label for="itemName">Produto:</label>
+            <input type="text" id="itemName" placeholder="Nome do produto">
+            
+            <label for="category">Categoria:</label>
+            <input type="text" id="category" placeholder="EX: Dvr, Fontes de Alimentação... Etc">
+
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" placeholder="Quantidade">
+            
+            <label for="operation">Operação:</label>
+            <select id="operation">
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+                <option value="compra">Compra</option>
+                <option value="devolucao">Devolução</option>
+            </select>
+            
+            <label for="employeeName">Funcionário:</label>
+            <input type="text" id="employeeName" placeholder="Nome do funcionário">
+            
+            <label for="operationDate">Data:</label>
+            <input type="date" id="operationDate">
+            
+            <label for="destinationType">Tipo de destino:</label>
+            <select id="destinationType">   
+                <option value="empresa">Empresa</option>
+                <option value="casa">Casa</option>
+                <option value="outro">Fazenda</option>
+            </select>
+
+            <label for="destinationName">Nome do Local:</label>
+            <input type="text" id="destinationName" placeholder="Nome do local">
+
+            <button onclick="processOperation()">Registrar</button>
+        </div>
+
+        <!-- Filtro de categorias -->
+        <div>
+            <h2>Filtrar por Categoria</h2>
+            <select id="categoryFilter" onchange="filterStockByCategory()" style="display: none;">
+                <option value="">Selecione uma categoria</option>
+            </select>
+        </div>
+
+        <!-- Tabela de estoque -->
+        <div>
+            <h2>Estoque Atual</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody id="stockTable">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Histórico de Operações -->
+        <div>
+            <h2>Histórico de Operações</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Funcionário</th>
+                        <th>Produto</th>
+                        <th>Operação</th>
+                        <th>Quantidade</th>
+                        <th>Data</th>
+                        <th>Local</th>
+                    </tr>
+                </thead>
+                <tbody id="operationHistory">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./src/index.js"></script>
+</body>
+</html>
