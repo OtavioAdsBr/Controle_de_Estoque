@@ -4,7 +4,8 @@
 ## Funcionalidades 🌟
 - Registrar Operações 📝: Permite registrar informações sobre produtos no estoque, como nome, categoria, quantidade, tipo de operação (entrada, saída, compra, devolução), nome do funcionário, data e local de destino.
 
-## Estoque Atual 📊: Visualize os produtos disponíveis no estoque com suas respectivas categorias e quantidades.
+## Estoque Atual 📊: 
+### Visualize os produtos disponíveis no estoque com suas respectivas categorias e quantidades.
 
 - Histórico de Operações 📜: Acompanhe as operações realizadas, incluindo o nome do funcionário, produto, operação, quantidade, data e local de destino.
 
