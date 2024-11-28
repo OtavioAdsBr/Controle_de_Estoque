@@ -1,6 +1,44 @@
 // Base inicial do estoque
 let stock = {
-    "Dvr": {
+    "Armanezamento": {
+        "HD 500 gb (Dvr)": 10,
+        "HD 1 tb (Dvr)": 10,
+        "HD 2 tb (Dvr)": 10,
+    },
+"Cabos": {
+        "Cabo Coaxial (Câmera)": 10,
+        "Cabo Coaxial Blindado (Câmera)": 10,
+        "Cabo de Alarme (Alarme)": 10,
+        "Cabo de Rede 5e": 10,
+        "Cabo de Rede Cat6": 10,
+        "Cabo de Rede Outros": 10,
+    },
+    "Câmeras": {
+        "Câmara Analogica Intelbras": 10,
+        "Câmara Analogica Hikvison": 10,
+        "Câmera Analogica Hilook": 10,
+        "Câmera Analogica MultiTech": 10,
+        "Câmera Ip Intelbras": 10,
+        "Câmera Ip Hikvison": 10,
+        "Caixinha de Câmera": 10,
+    },
+    "Central e Periféricos": {
+        "Central de Alarme Intelbras": 10,
+        "Central de Alarme JFL": 10,
+        "Sensor de alarme intelbras": 10,
+        "sensor de alarme sem fio intelbras": 10,
+        "Teclado de Central Intelbras": 10,
+        "Teclado de Central JFL": 10,
+        "Bateria de Central ": 10,
+        "Baterias Controle e Sensor": 10,
+    },
+    "Conectores": {
+        "Conector BNC(Câmera)": 20,
+        "Conector P4 (Câmera)": 20,
+        "Conector RJ (Cabo de Rede)": 20,
+        "Conector Balun (Câmera)": 20,
+    },
+"Dvr": {
         "Dvr 4 Canais Hikvison": 10,
         "Dvr 8 Canais Hikvison": 10,
         "Dvr 16 Canais Hikvison": 10,
@@ -18,44 +56,6 @@ let stock = {
         "Fonte de Dvr 12v Intelbras (Dvr)": 10,
         "Fonte de Dvr 12v Paralela (Dvr)": 10,
     },
-    "Conectores": {
-        "Conector BNC(Câmera)": 20,
-        "Conector P4 (Câmera)": 20,
-        "Conector RJ (Cabo de Rede)": 20,
-        "Conector Balun (Câmera)": 20,
-    },
-    "Central e Periféricos": {
-        "Central de Alarme Intelbras": 10,
-        "Central de Alarme JFL": 10,
-        "Sensor de alarme intelbras": 10,
-        "sensor de alarme sem fio intelbras": 10,
-        "Teclado de Central Intelbras": 10,
-        "Teclado de Central JFL": 10,
-        "Bateria de Central ": 10,
-        "Baterias Controle e Sensor": 10,
-    },
-    "Câmeras": {
-
-        "Câmara Analogica Intelbras": 10,
-        "Câmara Analogica Hikvison": 10,
-        "Câmera Analogica Hilook": 10,
-        "Câmera Analogica MultiTech": 10,
-        "Câmera Ip Intelbras": 10,
-        "Câmera Ip Hikvison": 10,
-    },
-    "Cabos": {
-        "Cabo Coaxial (Câmera)": 10,
-        "Cabo Coaxial Blindado (Câmera)": 10,
-        "Cabo de Alarme (Alarme)": 10,
-        "Cabo de Rede 5e": 10,
-        "Cabo de Rede Cat6": 10,
-        "Cabo de Rede Outros": 10,
-    },
-    "Armanezamento": {
-        "HD 500 gb (Dvr)": 10,
-        "HD 1 tb (Dvr)": 10,
-        "HD 2 tb (Dvr)": 10,
-    },
     "Parafuso e Bucha": {
         "Parafuso Philips nº8": 10,
         "Parafuso Philips nº6": 10,
@@ -68,6 +68,7 @@ let stock = {
         "Rack Caixa Organziadora (Dvr)": 10,
     }
 };
+
 // Função para mostrar o filtro de categorias somente quando o usuário clicar
 function showCategoryFilter() {
     const categoryFilter = document.getElementById('categoryFilter');
@@ -94,35 +95,30 @@ function filterStockByCategory() {
     const tableBody = document.getElementById('stockTable');
     tableBody.innerHTML = ''; // Limpa a tabela antes de atualizar
 
-    if (category === "") {
-        // Se nenhuma categoria for selecionada, não exibe nada
-        return;
-    } else {
-        // Exibe apenas os produtos da categoria selecionada
-        Object.keys(stock[category]).forEach(product => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${product}</td>
-                <td>${category}</td>
-                <td>${stock[category][product]}</td>
-            `;
-            tableBody.appendChild(row);
+    if (category === "") return;
+
+    Object.keys(stock[category]).forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${product}</td>
+            <td>${category}</td>
+            <td>${stock[category][product]}</td>
+        `;
+        tableBody.appendChild(row);
         });
     }
-}
+
 // Atualiza a tabela de estoque, organizando por categoria
 function updateStockTable() {
     const tableBody = document.getElementById('stockTable');
-    tableBody.innerHTML = ''; // Limpa a tabela antes de atualizar
+    tableBody.innerHTML = '';
 
     Object.keys(stock).forEach(category => {
-        // Adiciona uma linha para o nome da categoria
         const categoryRow = document.createElement('tr');
         categoryRow.innerHTML = `<td colspan="3"><strong>${category}</strong></td>`;
         categoryRow.style.backgroundColor = '#f2f2f2';
         tableBody.appendChild(categoryRow);
 
-        // Adiciona os produtos dentro da categoria
         Object.keys(stock[category]).forEach(product => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -134,24 +130,6 @@ function updateStockTable() {
         });
     });
 }
-// Atualiza o filtro de categorias (quando o filtro é acionado)
-function updateCategoryFilter() {
-    const categoryFilter = document.getElementById('categoryFilter');
-        categoryFilter.innerHTML = `<option value="">Selecione uma categoria</option>`; // Reseta o filtro
-
-        Object.keys(stock).forEach(category => {
-            const option = document.createElement('option');
-            option.value = category;
-            option.textContent = category;
-            categoryFilter.appendChild(option);
-    });
-}
-
-// Inicializa a exibição da tabela e o filtro de categorias
-window.onload = function() {
-    updateCategoryFilter();  // Carrega o filtro de categorias
-    // Deixa a tabela vazia até uma categoria ser selecionada
-};
 
 // Atualiza o histórico de operações
 function updateOperationHistory(employee, product, operation, quantity, date, destination) {
@@ -170,8 +148,6 @@ function updateOperationHistory(employee, product, operation, quantity, date, de
     historyBody.appendChild(row);
 }
 
-// Atualiza o histórico de operações (quando uma operação é realizada)
-
 // Processa as operações de entrada, saída, compra e devolução
 function processOperation() {
     const itemName = document.getElementById('itemName').value.trim();
@@ -189,17 +165,10 @@ function processOperation() {
         return;
     }
 
-    if (!stock[category]) {
-        // Se a categoria não existe, cria uma nova
-        stock[category] = {};
-    }
+    if (!stock[category]) stock[category] = {};
+    if (!stock[category][itemName]) stock[category][itemName] = 0;
 
-    if (!stock[category][itemName]) {
-        // Se o item não existe, inicializa com 0
-        stock[category][itemName] = 0;
-    }
-
-    switch (operation) {
+    switch (operation.toLowerCase()) {
         case 'entrada':
         case 'compra':
         case 'devolucao':
@@ -219,8 +188,8 @@ function processOperation() {
 
     updateStockTable();
     updateOperationHistory(employeeName, itemName, operation, quantity, operationDate, destination);
-
     alert('Operação realizada com sucesso!');
+
     document.getElementById('itemName').value = '';
     document.getElementById('category').value = '';
     document.getElementById('quantity').value = '';
@@ -229,8 +198,17 @@ function processOperation() {
     document.getElementById('destinationName').value = '';
 }
 
+    function saveStockToLocalStorage() {
+        localStorage.setItem('stock', JSON.stringify(stock));
+}
+    function loadStockFromLocalStorage() {
+        const storedStock = localStorage.getItem('stock');
+        if (storedStock) stock = JSON.parse(storedStock);
+}
 // Inicializa a exibição da tabela e o filtro de categorias
-window.onload = function() {
+window.onload = function () {
+    loadStockFromLocalStorage();
     updateStockTable();
-    showCategoryFilter();
+    updateCategoryFilter(); // Carrega o filtro de categorias
+    showCategoryFilter(); // Exibe o filtro de categorias na tela
 };

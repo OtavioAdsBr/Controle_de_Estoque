@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt.br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Operações</title>
+    <link rel="stylesheet" href="./src/main.css">
+</head>
+<body>
+    <h1>Histórico de Operações</h1>
+    
+    <div class="container">
+        <!-- Tabela de Histórico de Operações -->
+        <div>
+            <h2>Histórico de Operações</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Funcionário</th>
+                        <th>Produto</th>
+                        <th>Operação</th>
+                        <th>Quantidade</th>
+                        <th>Data</th>
+                        <th>Local</th>
+                    </tr>
+                </thead>
+                <tbody id="operationHistory">
+                    <!-- Histórico de operações será inserido aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <button onclick="goBack()">Voltar</button>
+
+    <script src="./src/historico.js"></script>
+</body>
+</html>
