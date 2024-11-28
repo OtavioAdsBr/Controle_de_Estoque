@@ -12,6 +12,7 @@
         <!-- Formulário de registro de operações -->
         <div class="form-container">
             <h2>Registrar Operações</h2>
+            <!-- Campos do formulário como antes -->
             <label for="itemName">Produto:</label>
             <input type="text" id="itemName" placeholder="Nome do produto">
             
@@ -46,6 +47,9 @@
             <input type="text" id="destinationName" placeholder="Nome do local">
 
             <button onclick="processOperation()">Registrar</button>
+
+            <!-- Botão de histórico -->
+            <button onclick="window.location.href = './registro.html'" style="margin-top: 10px;">Ver Histórico de Operações</button>
         </div>
 
         <!-- Filtro de categorias -->
@@ -71,26 +75,6 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Histórico de Operações -->
-        <div>
-            <h2>Histórico de Operações</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Funcionário</th>
-                        <th>Produto</th>
-                        <th>Operação</th>
-                        <th>Quantidade</th>
-                        <th>Data</th>
-                        <th>Local</th>
-                    </tr>
-                </thead>
-                <tbody id="operationHistory">
-                </tbody>
-            </table>
-        </div>
-    </div>
     <script src="./src/index.js"></script>
 </body>
 </html>
